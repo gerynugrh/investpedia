@@ -11,14 +11,14 @@ import (
 	"strconv"
 )
 
-func (dp *DialogFlowProcessor) init(projectID string, authJSONFilePath string, lang string, timeZone string) (err error) {
+func (dp *DialogFlowProcessor) init(projectID string, lang string, timeZone string) (err error) {
 	dp.projectID = projectID
-	dp.authJSONFilePath = authJSONFilePath
 	dp.lang = lang
 	dp.timeZone = timeZone
 
 	dp.ctx = context.Background()
-	sessionClient, err := dialogFlow.NewSessionsClient(dp.ctx, option.WithCredentialsFile(authJSONFilePath))
+
+	sessionClient, err := dialogFlow.NewSessionsClient(dp.ctx, option.WithCredentialsFile("google-credentials.json"))
 	if err != nil {
 		log.Fatal("Error in auth with dialog flow")
 		return
