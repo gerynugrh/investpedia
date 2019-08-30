@@ -1,3 +1,6 @@
 [submodule "merauke"]
 	path = merauke
 	url = https://github.com/gerywahyunugraha/investpedia-merauke
+[submodule "sabang"]
+	path = sabang
+	url = https://github.com/gerywahyunugraha/investpedia-sabang.git
