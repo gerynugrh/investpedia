@@ -4,3 +4,6 @@
 [submodule "sabang"]
 	path = sabang
 	url = https://github.com/gerywahyunugraha/investpedia-sabang.git
+[submodule "rote"]
+	path = rote
+	url = https://github.com/gerywahyunugraha/investpedia-rote
