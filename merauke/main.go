@@ -34,6 +34,10 @@ func main() {
 	http.ListenAndServe(addr, nil)
 }
 
+func test(ctx string, msg string) {
+	log.Println("Tested : ", ctx, msg)
+}
+
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
@@ -50,6 +54,17 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 		if event.Type == linebot.EventTypeMessage {
 			switch message := event.Message.(type) {
 			case *linebot.TextMessage:
+				var id string
+				if event.Source.GroupID == "" && event.Source.RoomID == "" {
+					id = event.Source.UserID
+				} else {
+					if event.Source.GroupID != "" {
+						id = event.Source.GroupID
+					} else {
+						id = event.Source.RoomID
+					}
+				}
+				test(id, message.Text)
 				quota, err := bot.GetMessageQuota().Do()
 				if err != nil {
 					log.Println("Quota err:", err)
