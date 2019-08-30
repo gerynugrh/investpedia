@@ -7,7 +7,6 @@ import (
 
 type DialogFlowProcessor struct {
 	projectID string
-	authJSONFilePath string
 	lang string
 	timeZone string
 	sessionClient *dialogFlow.SessionsClient
